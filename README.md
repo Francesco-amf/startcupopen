@@ -17,7 +17,7 @@ Para adicionar ou alterar o QR Code exibido na apresentação:
 1. Gere seu QR Code (usando ferramentas online como [QR Code Generator](https://www.qr-code-generator.com/) ou similar)
 2. Salve a imagem do QR Code como `qrcode.png`, `qrcode.jpg`, ou `qrcode.svg`
 3. Coloque o arquivo na pasta `assets/images/`
-4. Se usar um formato diferente de `.svg`, atualize a referência no arquivo `Superstart.html` (linha 412):
+4. Se usar um formato diferente de `.svg`, atualize a referência no arquivo `Superstart.html` (linha 415):
    ```html
    <img src="assets/images/qrcode.png" alt="QR Code para inscrição">
    ```
