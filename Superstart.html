@@ -426,15 +426,17 @@
 
         /* --- Página Inicial com Perguntas --- */
         .question-slide {
-            padding: 60px 40px;
+            padding: 50px 30px;
+            max-height: 100vh;
+            overflow-y: auto;
         }
 
         .question-title {
-            font-size: 3em;
+            font-size: 2.8em;
             font-weight: 800;
-            margin-bottom: 60px;
-            animation: fadeInDown 1s both;
-            line-height: 1.4;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.7s both;
+            line-height: 1.3;
             max-width: 1100px;
             margin-left: auto;
             margin-right: auto;
@@ -445,52 +447,75 @@
 
         .courses-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-            max-width: 1200px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px 40px;
         }
 
         .course-item {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 20px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(0, 212, 255, 0.08) 100%);
+            backdrop-filter: blur(15px);
+            border: 2px solid rgba(255, 255, 255, 0.25);
+            border-radius: 25px;
+            padding: 25px 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            transition: all 0.3s ease;
+            gap: 15px;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
             animation: popIn 0.5s both;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .course-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .course-item:hover::before {
+            opacity: 1;
         }
 
         .course-item:hover {
-            transform: translateY(-10px) scale(1.05);
-            background: rgba(255, 255, 255, 0.2);
-            border-color: #00d4ff;
-            box-shadow: 0 12px 35px rgba(0, 212, 255, 0.4);
+            transform: translateY(-15px) scale(1.08);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(0, 212, 255, 0.15) 100%);
+            border-color: rgba(0, 212, 255, 0.6);
+            box-shadow: 0 15px 45px rgba(0, 212, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
         }
 
         .course-logo {
-            width: 120px;
-            height: 120px;
+            width: 130px;
+            height: 130px;
             object-fit: contain;
             filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.3));
-            transition: transform 0.3s ease;
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            position: relative;
+            z-index: 1;
         }
 
         .course-item:hover .course-logo {
-            transform: scale(1.1) rotateY(10deg);
+            transform: scale(1.15) rotateY(8deg);
         }
 
         .course-name {
-            font-size: 1.2em;
+            font-size: 1.15em;
             font-weight: 700;
             text-align: center;
             line-height: 1.3;
+            position: relative;
+            z-index: 1;
         }
 
 
@@ -536,10 +561,12 @@
             .slide h3 { font-size: 1.6em; }
             .slide p { font-size: 1.2em; }
             .hook { font-size: 1.5em; }
-            .question-title { font-size: 2.2em; }
-            .courses-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 15px; }
-            .course-logo { width: 100px; height: 100px; }
-            .course-name { font-size: 1em; }
+            .question-title { font-size: 2em; }
+            .question-slide { padding: 40px 25px; }
+            .courses-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .course-logo { width: 110px; height: 110px; }
+            .course-name { font-size: 0.95em; }
+            .course-item { padding: 20px 12px; }
             .podium-block { width: 120px; padding: 18px; }
             .podium-prize { font-size: 1.6em; }
             .podium-position { font-size: 3em; }
@@ -557,18 +584,18 @@
             .slide p { font-size: 1em; max-width: 90%; }
             .hook { font-size: 1.1em; margin-top: 12px; letter-spacing: 1px; }
             .prizes { font-size: 1em; padding: 12px 20px; margin-top: 8px; }
-            .question-title { font-size: 1.5em; padding: 0 15px; margin-bottom: 30px; }
-            .question-slide { padding: 40px 15px; }
-            .courses-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; }
-            .course-logo { width: 70px; height: 70px; }
-            .course-name { font-size: 0.9em; }
-            .course-item { padding: 15px; gap: 10px; }
+            .question-title { font-size: 1.4em; padding: 0; margin-bottom: 25px; line-height: 1.3; }
+            .question-slide { padding: 30px 15px; justify-content: flex-start; }
+            .courses-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 0 10px 30px; }
+            .course-logo { width: 75px; height: 75px; }
+            .course-name { font-size: 0.85em; }
+            .course-item { padding: 12px 10px; gap: 8px; }
             .phase-list { margin-top: 15px; }
             .phase-list li { font-size: 1.1em; margin-bottom: 10px; padding: 10px 15px; }
             .icons { font-size: 3em; }
             .coins { font-size: 1.3em; }
-            .mentor-grid { gap: 10px; margin-top: 15px; }
-            .mentor-area { font-size: 0.95em; padding: 10px 18px; }
+            .mentor-grid { gap: 8px; margin-top: 15px; }
+            .mentor-area { font-size: 0.85em; padding: 8px 16px; }
             .podium-container { gap: 10px; margin: 25px 0; }
             .podium-block { width: 85px; padding: 12px; }
             .podium-prize { font-size: 1.1em; margin-top: 5px; }
@@ -576,8 +603,8 @@
             .podium-label { font-size: 0.7em; margin-top: 3px; }
             .incubation-note { font-size: 1em; padding: 12px 15px; margin-top: 20px; }
             .qr-placeholder { width: 180px; height: 180px; margin-top: 20px; }
-            .logo { max-width: 300px; }
-            .logo-small { max-width: 150px; margin-top: 15px; }
+            .logo { max-width: 280px; margin-bottom: 20px; }
+            .logo-small { max-width: 140px; margin-top: 15px; }
         }
 
     </style>
@@ -713,18 +740,18 @@
         </div>
 
         <div class="slide" data-duration="10000">
-            <h2>O EDITAL ESTÁ LANÇADO.</h2>
-            <h3 style="animation-delay: 0.5s;">MONTE SUA EQUIPE.</h3>
-            <h3 style="animation-delay: 0.8s;">PREPARE-SE PARA A MADRUGADA.</h3>
-            
-            <div class="qr-placeholder">
-                <img src="qrcode.jpeg" alt="QR Code para inscrição" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px;">
-            </div>
-
-            <picture>
+            <picture style="animation: logoEntrance 1s ease-out both;">
                 <source srcset="logo.jpeg?v=3" type="image/jpeg">
                 <img src="logo.jpeg?v=3" alt="StartCup AMF Logo" class="logo-small">
             </picture>
+
+            <h2>O EDITAL ESTÁ LANÇADO.</h2>
+            <h3 style="animation-delay: 0.5s;">MONTE SUA EQUIPE.</h3>
+            <h3 style="animation-delay: 0.8s;">PREPARE-SE PARA A MADRUGADA.</h3>
+
+            <div class="qr-placeholder">
+                <img src="qrcode.jpeg" alt="QR Code para inscrição" style="width: 100%; height: 100%; object-fit: contain; border-radius: 20px;">
+            </div>
         </div>
 
     </div>
