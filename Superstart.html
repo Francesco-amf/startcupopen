@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
     <title>Lançamento - StartCup AMF</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -12,6 +12,13 @@
             box-sizing: border-box;
         }
 
+        html {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             /* Cores atualizadas para combinar com o logo (azul escuro e ciano) */
@@ -19,13 +26,14 @@
             background-size: 200% 200%;
             animation: gradientShift 15s ease infinite;
             color: #ffffff;
-            overflow: hidden;
+            overflow: hidden !important;
             text-align: center;
             position: relative;
             width: 100vw;
             height: 100vh;
             margin: 0;
             padding: 0;
+            touch-action: none;
         }
 
         /* Partículas flutuantes de fundo */
@@ -59,6 +67,8 @@
             width: 100vw;
             height: 100vh;
             z-index: 1;
+            overflow: hidden !important;
+            max-height: 100vh;
         }
 
         .slide {
@@ -430,9 +440,9 @@
 
         /* --- Página Inicial com Perguntas --- */
         .question-slide {
-            padding: 40px 25px;
+            padding: 35px 20px;
             max-height: 100vh;
-            overflow: hidden;
+            overflow: hidden !important;
             display: flex;
             flex-direction: column;
             justify-content: center;
