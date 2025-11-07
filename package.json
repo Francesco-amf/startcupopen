@@ -1,0 +1,29 @@
+{
+  "name": "startcup-video-generator",
+  "version": "1.0.0",
+  "description": "Converte apresentação StartCup para vídeo MP4 (Instagram)",
+  "main": "capture-video.js",
+  "type": "commonjs",
+  "scripts": {
+    "generate-video": "node capture-video.js",
+    "generate-video-local": "node capture-video-local.js"
+  },
+  "keywords": [
+    "video",
+    "instagram",
+    "presentation",
+    "puppeteer",
+    "ffmpeg"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "puppeteer": "^21.1.1",
+    "fluent-ffmpeg": "^2.1.2",
+    "ffmpeg-static": "^5.2.0"
+  },
+  "devDependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
